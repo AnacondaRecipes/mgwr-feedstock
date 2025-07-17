@@ -7,6 +7,8 @@ package:
 source:
   url: https://pypi.io/packages/source/m/mgwr/mgwr-{{ version }}.tar.gz
   sha256: 8b00ba992fd85c9528327eae88e104e072939d0d5203b72c513ef29d5c400ff7
+  patches:
+    - fix_imports.patch
 
 build:
   number: 0
@@ -32,10 +34,17 @@ test:
     - mgwr
   requires:
     - pip
+    - pytest
   commands:
     - pip check
-    # Disbled tests because: ImportError:
-    # attempted relative import beyond top-level package
+    # Skipping tests below because the source dist doesn't have *csv files
+    - |
+      pytest mgwr/tests -v -k "not (TestGWRGaussian or TestGWRPoisson or \
+      TestGWRBinomial or TestGWRGaussianParallel or TestGWRPoissonParallel or \
+      TestGWRBinomialParallel or TestGWRSelBWPoisson)"
+  source_files:
+    - mgwr/tests
+
 
 about:
   home: https://github.com/pysal/mgwr
