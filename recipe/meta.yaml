@@ -26,6 +26,7 @@ requirements:
     - setuptools
   run:
     - python
+    # <4.10 has incompatible scipy:import error
     - libpysal >=4.10
     - numpy >=1.3
     - scipy >=0.11
@@ -41,10 +42,7 @@ test:
   commands:
     - pip check
     # Skipping tests below because the source dist doesn't have *csv files
-    - |
-      pytest mgwr/tests -v -k "not (TestGWRGaussian or TestGWRPoisson or \
-      TestGWRBinomial or TestGWRGaussianParallel or TestGWRPoissonParallel or \
-      TestGWRBinomialParallel or TestGWRSelBWPoisson)"
+    - pytest mgwr/tests -v -k "not (TestGWRGaussian or TestGWRPoisson or TestGWRBinomial or TestGWRGaussianParallel or TestGWRPoissonParallel or TestGWRBinomialParallel or TestGWRSelBWPoisson)"
   source_files:
     - mgwr/tests
 
