@@ -16,6 +16,9 @@ build:
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed --no-cache-dir -vv
 
 requirements:
+  build:
+    - patch  # [unix]
+    - msys2-patch  # [win]
   host:
     - python
     - pip
