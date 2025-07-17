@@ -28,7 +28,9 @@ requirements:
     - python
     - libpysal >=4.0.0
     - numpy >=1.3
-    - scipy >=0.11
+    # ImportError: cannot import name 'inf' from 'scipy'
+    # Scipy removed scipy.inf starting from 1.8
+    - scipy >=0.11,<1.8.0
     - spglm >=1.0.6
     - spreg
 
