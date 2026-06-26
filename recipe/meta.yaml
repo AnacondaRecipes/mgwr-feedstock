@@ -9,7 +9,7 @@ source:
   sha256: 8b00ba992fd85c9528327eae88e104e072939d0d5203b72c513ef29d5c400ff7
 
 build:
-  number: 0
+  number: 1
   # Skip Python <3.10 due to libpysal <4.10 (noarch) causing import errors with scipy >=1.8.0
   skip: true  # [py<310]
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed --no-cache-dir -vv
